@@ -7,6 +7,7 @@ const containerResult = document.getElementById("containerResult");
 
 const matrixXY = []
 const matrixXY2 = []
+let createdMatrix = false
 
 const createRows = (arr) => {
     const rowContainer = document.getElementsByClassName('containerElements');
@@ -80,19 +81,22 @@ const createMatrix = (m1, m2) => {
 matrixForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    matrixCont.style.display = "flex";
-
-    for (let i = 0; i < matrixForm.elements['rows'].value; i++) {
-        matrixXY.push([])
-        matrixXY2.push([])
-
-        for (let j = 0; j < matrixForm.elements['cols'].value; j++) {
-            matrixXY[i].push(1)
-            matrixXY2[i].push(1)
+    if (!createdMatrix) {
+        matrixCont.style.display = "flex";
+    
+        for (let i = 0; i < matrixForm.elements['rows'].value; i++) {
+            matrixXY.push([])
+            matrixXY2.push([])
+    
+            for (let j = 0; j < matrixForm.elements['cols'].value; j++) {
+                matrixXY[i].push(1)
+                matrixXY2[i].push(1)
+            }
         }
+    
+        createMatrix(matrixXY, matrixXY2);
+        createdMatrix = !createdMatrix
     }
-
-    createMatrix(matrixXY, matrixXY2);
 })
 
 obtainResult.addEventListener("click", async () => {
