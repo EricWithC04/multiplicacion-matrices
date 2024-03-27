@@ -67,14 +67,14 @@ const createElements = (numElements, numElements2) => {
                 console.log(matrixXY2);
             });
             
-            elementsContainer[numElements2 + i].appendChild(newElement)
+            elementsContainer[(elementsContainer.length / 2) + i].appendChild(newElement)
         }
     }
 }
 
 const createMatrix = (m1, m2) => {
     createRows(m1);
-    createElements(m1.length, m2.length);
+    createElements(m1[0].length, m2[0].length);
 }
 
 matrixForm.addEventListener('submit', (e) => {
