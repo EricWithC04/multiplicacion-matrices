@@ -62,12 +62,12 @@ body {
     outline: 2px solid black;
 }
 
-.addition {
+.multiplication {
     display: flex;
     align-items: center;
 }
 
-.addition button {
+.multiplication button {
     width: 45px;
     height: 22px;
 }

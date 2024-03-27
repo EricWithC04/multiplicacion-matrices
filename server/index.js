@@ -8,7 +8,7 @@ app.use(function (req, res, next) {
     next();
 })
 
-app.post("/matrixAddition", (req, res) => {
+app.post("/matrixMultiplication", (req, res) => {
 
     const matrix1 = req.body.matrix1
     const matrix2 = req.body.matrix2
