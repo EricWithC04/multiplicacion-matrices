@@ -9,22 +9,27 @@ const matrixXY = []
 const matrixXY2 = []
 let createdMatrix = false
 
-const createRows = (arr) => {
+const createRows = (arr, arr2) => {
     const rowContainer = document.getElementsByClassName('containerElements');
 
-    for (let j = 0; j < rowContainer.length; j++) {
-        for (let i = 0; i < arr.length; i++) {
-            const newRow = document.createElement("div")
-            newRow.classList.add("containerRow");
+    for (let i = 0; i < arr.length; i++) {
+        const newRow = document.createElement("div")
+        newRow.classList.add("containerRow");
     
-            rowContainer[j].appendChild(newRow)
-        }
+        rowContainer[0].appendChild(newRow)
+    }
+
+    for (let i = 0; i < arr2.length; i++) {
+        const newRow = document.createElement("div")
+        newRow.classList.add("containerRow");
+    
+        rowContainer[1].appendChild(newRow)
     }
 }
-const createElements = (numElements, numElements2) => {
+const createElements = (numElements, numElements2, numRows, numRows2) => {
     const elementsContainer = document.getElementsByClassName('containerRow');
 
-    for (let i = 0; i < elementsContainer.length / 2; i++) {
+    for (let i = 0; i < numRows; i++) {
 
         for (let j = 0; j < numElements; j++) {
             const newElement = document.createElement("div")
@@ -48,7 +53,7 @@ const createElements = (numElements, numElements2) => {
         }
     }
 
-    for (let i = 0; i < elementsContainer.length / 2; i++) {
+    for (let i = 0; i < numRows2; i++) {
 
         for (let j = 0; j < numElements2; j++) {
             const newElement = document.createElement("div")
@@ -68,14 +73,14 @@ const createElements = (numElements, numElements2) => {
                 console.log(matrixXY2);
             });
             
-            elementsContainer[(elementsContainer.length / 2) + i].appendChild(newElement)
+            elementsContainer[numRows + i].appendChild(newElement)
         }
     }
 }
 
 const createMatrix = (m1, m2) => {
-    createRows(m1);
-    createElements(m1[0].length, m2[0].length);
+    createRows(m1, m2);
+    createElements(m1[0].length, m2[0].length, m1.length, m2.length);
 }
 
 matrixForm.addEventListener('submit', (e) => {
@@ -86,10 +91,16 @@ matrixForm.addEventListener('submit', (e) => {
     
         for (let i = 0; i < matrixForm.elements['rows'].value; i++) {
             matrixXY.push([])
-            matrixXY2.push([])
     
             for (let j = 0; j < matrixForm.elements['cols'].value; j++) {
                 matrixXY[i].push(1)
+            }
+        }
+
+        for (let i = 0; i < matrixForm.elements['cols'].value; i++) {
+            matrixXY2.push([])
+    
+            for (let j = 0; j < matrixForm.elements['rows'].value; j++) {
                 matrixXY2[i].push(1)
             }
         }
